@@ -109,8 +109,9 @@ namespace :git do
     # make sure we've fetched to get latest from upstream. 
     ensure_git_fetch
     
-    # crazy git command, yeah. 
-    last_tag = `git for-each-ref --sort='taggerdate' --format='%(refname:short)' 'refs/tags/#{pattern_prefix}-*' 2>/dev/null | tail -1 `.chomp
+    # crazy git command, yeah. Sort by tagged date descending, one line only, 
+    # output refname:short, look for tags matching our pattern.  
+    last_tag = `git for-each-ref --count=1 --sort='-taggerdate' --format='%(refname:short)' 'refs/tags/#{pattern_prefix}-*' 2>/dev/null`.chomp
     return nil if last_tag == ''
     return last_tag
   end
