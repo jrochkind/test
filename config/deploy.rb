@@ -1,5 +1,9 @@
 require 'cap_git_tools/tasks'
 
+set :stages, ['production', 'staging']
+set :default_stage, "staging"
+require 'capistrano/ext/multistage'
+
 set :application, "testing"
 set :repository,  "git@github.com:jrochkind/test.git"
 set :branch, "foo"
@@ -17,8 +21,7 @@ role :app, "blacklight.library.jhu.edu"                          # Your HTTP ser
 set :deploy_to, "/home/rochkind/tmp/cap-deploy-test"
 
 
-before "deploy:update", "git:tag"
-before "git:tag", "git:guard_committed", "git:guard_upstream" 
+
 
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
