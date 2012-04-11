@@ -2,11 +2,13 @@ require 'cap_git_tools/tasks'
 
 set :application, "testing"
 set :repository,  "git@github.com:jrochkind/test.git"
-
+set :branch, "foo"
+set :use_sudo, false
 set :scm, :git 
+
 set :ssh_options, {:forward_agent => true}
-ssh_options[:forward_agent] = true
-default_run_options[:pty] = true
+#ssh_options[:forward_agent] = true
+#default_run_options[:pty] = true
 
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
