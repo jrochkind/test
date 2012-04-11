@@ -6,7 +6,7 @@ require 'capistrano/ext/multistage'
 
 set :application, "testing"
 set :repository,  "git@github.com:jrochkind/test.git"
-set :branch, "foo"
+
 set :use_sudo, false
 set :scm, :git 
 
